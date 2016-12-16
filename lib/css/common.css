@@ -1,0 +1,154 @@
+/**
+ * Theme twists for reveal.js.
+ * Adapted from: Evan Chan @velvia
+ */
+
+/*********************************************
+ * HEADERS
+ *********************************************/
+.reveal h1,
+.reveal h2,
+.reveal h3,
+.reveal h4,
+.reveal h5,
+.reveal h6 {
+  text-transform: none;
+  height: 0.9em;
+}
+
+/*********************************************
+ * IMAGES
+ *********************************************/
+.reveal section img {
+  background: none;
+  border: none;
+  -webkit-box-shadow: none;
+  -moz-box-shadow: none;
+  box-shadow: none;
+  -webkit-transition: none;
+  -moz-transition: none;
+  -ms-transition: none;
+  -o-transition: none;
+  transition: none;
+}
+
+.reveal .lightimgback {
+  background: #999999;
+}
+
+/* container style for mermaid diagrams */
+.reveal .mermaid {
+  /*background: #999999;
+  border: 1px solid;
+  padding: 3px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto*/
+}
+
+/*********************************************
+ * TABLES
+ *********************************************/
+.reveal table {
+  margin-left: auto;
+  margin-right: auto;
+  border-collapse: collapse;
+  width: 70%;
+}
+
+.reveal .fullwidth {
+  width: 100%;
+}
+
+.reveal table, .reveal th, .reveal td {
+  border: 1px solid;
+  padding: 3px;
+}
+
+.reveal table th,
+.reveal table td {
+	font-size:16pt;
+}
+
+
+/*********************************************
+ * OTHER
+ *********************************************/
+p {
+  text-align: left;
+}
+
+img {
+  /*text-align:center;*/
+  margin:0;
+  padding:0;
+  border:0;
+  display:block;
+}
+
+img.fullscreen-img {
+  display: none; }
+
+img.wide {
+    width: 120%;
+}
+
+img.quarterwidth {
+    width: 33%;
+}
+
+img.halfwidth {
+    width: 50%;
+}
+
+img.threewidth {
+    width: 75%;
+}
+
+.wrapper {
+  display: flex;
+}
+
+.corner-text {
+  position: absolute;
+  bottom: 10px;
+  left  : 40px;
+  width : 100px;
+  height: 100px;
+}
+
+.giant {
+  font-size: 1.8em; }
+
+.smaller {
+  font-size: 0.6em; }
+
+.footnote {
+  font-size: 0.6em !important;
+  padding-top: 6em !important; }
+
+.toy-store-blue {
+  color: #12daeb; }
+
+.blushing-salmon {
+  color: #f513aa; }
+
+.golden {
+  color: #ffca14; }
+
+.greenery {
+  color: #49f071; }
+
+.georgia-peach {
+  color: #ff9c4e; }
+
+.cassred {
+  color: #CA5F14;
+}
+
+.scalared {
+  color: #E61F00;
+}
+
+.radioactive-banana {
+  color: #ffe34e; }
