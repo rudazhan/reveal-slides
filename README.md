@@ -14,6 +14,13 @@ Starting Steps:
 1. Serve the presentation on localhost:8000
   - `grunt serve`
 
+New Slides Deck:
+
+1. create a directory at root for new deck;
+1. copy `index.html` from a recent deck, modify `<title>` and `data-markdown`, optionally change themes/stylesheet and configuration script section;
+1. write content in Markdown file.
+1. Serve this project with endpoint being the directory name of the new deck.
+
 Export to PDF: (Chrome)
 
 1. Include `print-pdf` in URL query string
