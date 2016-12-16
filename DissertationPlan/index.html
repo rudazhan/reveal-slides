@@ -1,0 +1,111 @@
+<!doctype html>
+<html lang="en">
+
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+    <title>Dissertation Continuation Plan</title>
+
+    <link rel="stylesheet" href="/reveal.js-3.3.0/css/reveal.css">
+		<!-- Similar Themes: white, beige, simple -->
+    <link rel="stylesheet" href="/reveal.js-3.3.0/css/theme/solarized.css" id="theme">
+		<!-- Theme used for syntax highlighting of code -->
+    <link rel="stylesheet" href="/reveal.js-3.3.0/lib/css/zenburn.css">
+		<!-- CSS twist -->
+    <link rel="stylesheet" href="/lib/css/common.css">
+
+     <!-- If the query includes 'print-pdf', include the PDF print sheet -->
+    <script>
+        if( window.location.search.match( /print-pdf/gi ) ) {
+            var link = document.createElement( 'link' );
+            link.rel = 'stylesheet';
+            link.type = 'text/css';
+            link.href = '/reveal.js-3.3.0/css/print/pdf.css';
+            document.getElementsByTagName( 'head' )[0].appendChild( link );
+        }
+    </script>
+  </head>
+
+  <body>
+    <div class="reveal">
+			<!-- Any section element inside of this container is displayed as a slide -->
+      <div class="slides">
+
+        <!-- Sections data read from markdown, separate horizontal slides with
+        newline + two dashes + newline, vertical slides by three dashes -->
+        <section data-markdown="pitch.md"
+                 data-separator="^\n--\n$"
+                 data-separator-vertical="^\n---\n$">
+        </section>
+
+      </div>
+    </div>
+
+    <script src="/reveal.js-3.3.0/lib/js/head.min.js"></script>
+    <script src="/reveal.js-3.3.0/js/reveal.js"></script>
+
+    <!-- Mermaid for charts and diagrams. -->
+    <script src="/lib/js/mermaid.min.js"></script>
+    <link rel="stylesheet" href="/lib/css/mermaid.forest.css">
+    <script>
+        var config = {
+            startOnLoad:true,
+            cloneCssStyles:false,
+            logLevel:1,
+            flowchart:{
+              useMaxWidth:true,
+              htmlLabels:true
+            }
+        };
+        mermaid.initialize(config);
+    </script>
+
+    <script>
+
+			// More info https://github.com/hakimel/reveal.js#configuration
+      Reveal.initialize({
+        controls: true,
+        progress: true,
+        history: true,
+        center: true,
+
+				transition: 'slide', // Options: none/fade/slide/convex/concave/zoom
+
+        // Provide path to MathJax repository
+        // See http://docs.mathjax.org/en/latest/config-files.html
+        math: {
+            mathjax: '/lib/js/MathJax-2.7.0/MathJax.js',
+            config: 'TeX-AMS_HTML-full'
+        },
+
+        // Optional libraries used to extend on reveal.js
+				// More info https://github.com/hakimel/reveal.js#dependencies
+        // If you add dependencies to this JSON list, please add comma!
+        dependencies: [
+          // Cross-browser shim that fully implements classList
+          { src: '/reveal.js-3.3.0/lib/js/classList.js',
+            condition: function() { return !document.body.classList; } },
+          // Interpret Markdown in <section> elements
+          { src: '/reveal.js-3.3.0/plugin/markdown/marked.js',
+            condition: function()
+              { return !!document.querySelector( '[data-markdown]' ); } },
+          { src: '/reveal.js-3.3.0/plugin/markdown/markdown.js',
+            condition: function()
+              { return !!document.querySelector( '[data-markdown]' ); } },
+          // Syntax highlight for <code> elements
+          { src: '/reveal.js-3.3.0/plugin/highlight/highlight.js', async: true,
+            callback: function() { hljs.initHighlightingOnLoad(); } },
+          // Speaker notes
+          { src: '/reveal.js-3.3.0/plugin/notes/notes.js' },
+          // Zoom in and out with Alt+click
+          { src: '/reveal.js-3.3.0/plugin/zoom-js/zoom.js', async: true },
+          // include the light wrapper plugin for MathJax
+          { src: '/reveal.js-3.3.0/plugin/math/math.js', async: true }
+        ]
+      });
+
+    </script>
+
+  </body>
+</html>
