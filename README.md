@@ -7,10 +7,10 @@ Web presentation using `reveal.js` and `remark.js`, learning from @velvia.
 Starting Steps:
 
 1. make sure you have `node.js` and `grunt`.
-  - a global update is recommended: `npm update -g`
-1. download the latest `reveal.js` distribution and install
-  - `git clone https://github.com/hakimel/reveal.js.git`
-  - `cd reveal.js && npm install`
+  - (global) update is recommended: `npm update`
+1. download the latest `reveal.js` distribution and install here.
+  - `tar -C . -zxf ~/Downloads/reveal*{.tar.gz,.zip}`
+  - `npm install`
 1. Serve the presentation on localhost:8000
   - `grunt serve`
 
