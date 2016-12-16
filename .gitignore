@@ -3,11 +3,10 @@ node_modules/
 
 # IDE files
 .idea/
-*.iml
 *.iws
 
 .DS_Store
 *~
 
 # Additional
-#lib/js/MathJax-2.6/
+lib/js/MathJax*/

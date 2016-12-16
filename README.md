@@ -38,18 +38,18 @@ Project Structure: (in Git)
 
 MathJax:
 
-- Install MathJax for offline rendering.
-  - `wget https://github.com/mathjax/MathJax/archive/master.zip`
-  - `unzip master.zip -d /repo/reveal.js/lib/js && rm $_`
+- Install MathJax for offline localhost rendering.
+  - `wget https://github.com/mathjax/MathJax/archive/2.7.0.zip`
+  - `unzip MathJax*.zip -d ./lib/js && rm $_`
 - Provide path to MathJax repository in `Reveal.initialize()`
   ```js
   math: {
-      mathjax: '../lib/js/MathJax-2.6/MathJax.js',
+      mathjax: '/lib/js/MathJax-2.6/MathJax.js',
       config: 'TeX-AMS_HTML-full'
-  },
+  }
   ```
 - Call the math wrapper plugin in dependencies (add comma after the item before)
-  - `{ src: '../plugin/math/math.js', async: true }`
+  - `{ src: '/plugin/math/math.js', async: true }`
 - Math syntax supported in markdown
   - Markdown inline code quotes + LaTeX
   - Gollum type: `\\(\\)` for inline math, `\\[\\]` for display math.
