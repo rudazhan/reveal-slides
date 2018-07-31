@@ -1,25 +1,44 @@
 # Web Presentations with reveal.js
 
-Web presentation using `reveal.js` and `remark.js`, learning from @velvia.
+Web presentation using `reveal.js`, learning from [Evan Chan](https://github.com/velvia).
 
 [reveal.js Documentation](https://github.com/hakimel/reveal.js)
 
+Example slides using `reveal.js`:
+
+- [OSGeo-live 8.5 Example](http://live.osgeo.org/en/presentation/index.html#/)
+- [Eric Theise - Let's Talk About Your Geostack](http://erictheise.github.io/geostack-deck/)
+
+
+## Fast User Guide
+
 Starting Steps:
 
-1. make sure you have `node.js` and `grunt`.
-  - (global) update is recommended: `npm update`
+1. make sure you have Node.js `nodejs` and `grunt` installed.
+  - Node package update is recommended: `npm update`
 1. download the latest `reveal.js` distribution and install here.
   - `tar -C . -zxf ~/Downloads/reveal*{.tar.gz,.zip}`
   - `npm install`
-1. Serve the presentation on localhost:8000
+1. Serve the presentation locally.
   - `grunt serve`
 
 New Slides Deck:
 
-1. create a directory at root for new deck;
-1. copy `index.html` from a recent deck, modify `<title>` and `data-markdown`, optionally change themes/stylesheet and configuration script section;
-1. write content in Markdown file.
-1. Serve this project with endpoint being the directory name of the new deck.
+1. create a directory (kebab-case) at root for new deck;
+1. copy `index.html` from a recent deck, modify `<title>`, optionally change `data-markdown`, themes/stylesheet and configuration script section;
+1. write slides content in `content.md`.
+1. Serve this project with endpoint being the directory name of the new deck: `localhost:8000/<deck-name>/?<parameter-list>#/major/minor`.
+
+Presentation Key Binding:
+
+- `?`, list keyboard shortcuts;
+- `f`, full screen;
+- `s`, speaker view;
+- `b` or `.`, blackout;
+- navigation: `n`/`p`, `j`/`k`/`h`/`l`, space and arrow keys, `home`/`end`;
+- `o` or `ESC`: toggle overview;
+- Alt+click: zoom (Does not solve content overflow.)
+- `m`: menu (plugin enabled)
 
 Export to PDF: (Chrome)
 
@@ -31,17 +50,79 @@ Export to PDF: (Chrome)
   - Background graphics: true
 1. Save
 
-## The reveal.js Repository
 
-Project Structure: (in Git)
+## Project Structure
 
-    css/      Core reveal.js styles
-    js/       Core reveal.js JavaScripts
-    plugin/   Extensions to reveal.js
-    lib/      All other third party assets (js/, css/, font/)
-    test/     Test files of reveal.js
+- slides deck directories (kebab-case): `index.html`, `content.md`, images and affliate files.
+- `lib/`: custom assets on reveal.js
+    - `js/`, local copy of MathJax (git-ignored).
+    - `css/`, custom styles.
+    - `plugin/`: third-party extensions to reveal.js.
+- `reveal.js-<version>`, local copy of reveal.js (git-ignored).
+    - `js/`: Core reveal.js JavaScripts
+    - `css/`: Core reveal.js styles
+    - `test/`: Test files of reveal.js
+    - `plugin/`: Extensions to reveal.js
+    - `lib/`: All other third party assets (js/, css/, font/)
+- `node_modules`: node.js modules (git-ignored) for reveal.js.
 
-### Plugins
+
+## Features
+
+- [Basics](#basics) with Markdown: headings, italics/bold/quote, link (support internal reference), list, table, image
+- code syntax highlighting with `highlight.js` and scrollbar
+- [Math](#math) with MathJax: math symbol and equation
+- [UML diagrams](#uml-diagrams) with Mermaid
+- [Speaker notes](#speaker-notes)
+- mobile support: second screen
+- Multiplexing (master-client presentation broadcasting)
+
+Others:
+
+- themes: Black (default), White, League, Sky, Beige, Simple, Serif, Blood, Night, Moon, Solarized
+- graphic background:
+  - color/image: `data-background=""` with CSS color or path (GIF supported).
+  - image tiling: `data-background-repeat="repeat"`
+  - video: `data-background-video="video.mp4,video.webm"`
+  - iframe
+  - transition: `data-background-transition=""`
+- slide fragments: step through, styles (change sizes, fade, highlight)
+- advanced JavaScript support
+
+Othe plugins:
+
+- [slideout menu](https://github.com/denehyg/reveal.js-menu)
+- anything: chart.js, D3.js
+- chalkboard
+- [pug](https://github.com/pugjs/pug): a template engine for Node.js.
+
+URL parameters (overriding):
+
+- transition styles: `?transition=` none, fade, slide; convex, concave; zoom;
+
+Footnote is currently not supported.
+You may hack one with `<span class="footnote">Footnote text here.</span>` at end of section.
+
+### Basics
+
+
+
+Markdown plugin configuration:
+
+1. use `marked` for GitHub Flavored Markdown.
+1. Data path is specified with section element's `data-markdown` attribute.
+1. Section partition could be customarily defined with `data-separator` and `data-separator-vertical` attributes by RegEx.
+
+HTML hacks:
+
+- newline `&nbsp;`
+- paragraph `<p>`
+- HTML element attributes:
+    - slide: `<!-- .slide: data-background="img.png" -->`;
+    - fragment: `<!-- .element: class="fragment" data-fragment-index="1" -->`;
+- align image (e.g. to left/right) with attribute `align` of `img` element.
+
+### Math
 
 MathJax:
 
@@ -61,23 +142,12 @@ MathJax:
   - Markdown inline code quotes + LaTeX
   - Gollum type: `\\(\\)` for inline math, `\\[\\]` for display math.
 
-Markdown:
+### Speaker notes
 
-1. `marked` for GitHub Flavored Markdown.
-1. Data path is specified with section element's `data-markdown` attribute.
-1. Section partition could be customarily defined with `data-separator` and `data-separator-vertical` attributes by RegEx.
-1. HTML hacks
-  - newline `&nbsp;`
-  - paragraph `<p>`
-  - add attribute to current section element, like
-  `<!-- .slide: data-background="img.png" -->`
-  - align image (e.g. to left/right) with attribute `align` of `img` element.
+Prepend `NOTE: ` before your speaker note, and put at end of section.
+One paragraph only.
 
-Speaker note:
-
-1. Prepend `NOTE: ` before your speaker note, and put at end of section.
-
-### Third Party Assets
+### UML diagrams
 
 Mermaid:
 
@@ -101,59 +171,3 @@ Mermaid:
 
 [Yeoman generator for Reveal.js](https://github.com/slara/generator-reveal)
 
-
-## Features
-
-- format support:
-  - Markdown: heading, quote, list, table, image, link (support internal reference)
-  - MathJax: math
-  - code syntax highlighting with `highlight.js` and scrollbar
-  - PDF export
-- mobile support
-- speaker notes: `NOTE: ` at end of section.
-
-Key binding:
-- navigation: space, arrow keys.
-- overview (toggle): ESC
-- speaker view: `s`
-- full screen: `f`
-- blackout: `b` or `.`
-- zoom: Alt+click (doesn't solve content overflow)
-
-- fragments: step through, styles (sizes, fade, highlight)
-- transition styles: `?transition=` none, fade, slide; convex, concave; zoom;
-- themes: Black (default), White, League, Sky, Beige, Simple, Serif, Blood, Night, Moon, Solarized
-- slide background:
-  - color/image: `data-background=""` with CSS color or path (GIF supported).
-  - image tiling: `data-background-repeat="repeat"`
-  - video: `data-background-video="video.mp4,video.webm"`
-  - transition: `data-background-transition=""`
-- advanced JavaScript support
-
-Footnote is currently not supported.
-You may hack one with `<span class="footnote">Footnote text here.</span>` at end of section.
-
-
-## Demos
-
-Example slides using `reveal.js`:
-
-- [OSGeo-live 8.5 Example](http://live.osgeo.org/en/presentation/index.html#/)
-- [Eric Theise - Let's Talk About Your Geostack](http://erictheise.github.io/geostack-deck/)
-
-
-## Design
-
-Beware of content overflow (at bottom), which depends on the screen.
-reveal.js does not check content overflow.
-Mind that office projectors are typically square;
-modern projectors tend to be wide;
-computer displays are wide;
-mobile screens are wider.
-
-Slide background color/image could be used for chapter transitioning.
-
-Typically you wouldn't want uppercased headings, overwrite theme CSS parameter on `text-transform` to `none`.
-
-The epiphany of good presentation:
-To pack information, use visualizations (diagram, image, gif, video).
